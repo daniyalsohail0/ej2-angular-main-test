@@ -1,0 +1,93 @@
+<button id='show' ejs-button class='e-flat' (click)='show()'> Show </button>
+<button id='hide' ejs-button class='e-flat' (click)='hide()'> Hide </button>
+<ejs-treegrid 
+    [dataSource]="data" 
+    [treeColumnIndex]="1" 
+    [allowFiltering]="true" 
+    [sortSettings]="sortSettings"
+    [allowSorting]="true" 
+    childMapping="subtasks" 
+    [allowPaging]="true" 
+    [pageSettings]="pageSettings" 
+    height="440" 
+    [editSettings]="editSettings" 
+    [toolbar]="toolbar"
+    [showColumnChooser]='true'
+    [autoCheckHierarchy]='true'
+    [allowRowDragAndDrop]='true'
+    [rowDropSettings]='rowDrop'
+    [allowResizing]='true' 
+    (dataBound)='onDataBound()'
+    >
+        <e-columns>
+            <e-column 
+                type='checkbox' 
+                width='50'
+                isFrozen="true"
+            ></e-column>
+            <e-column 
+                field='taskID' 
+                headerText='Task ID' 
+                textAlign='Left' 
+                width=100 
+                isPrimaryKey="true"
+                isFrozen= 'true'
+            ></e-column>
+            <e-column 
+                field='taskName' 
+                headerText='Task Name' 
+                textAlign='Left' 
+                width=180
+                [showInColumnChooser]='false'
+                isFrozen= 'true'
+            ></e-column>
+            <e-column 
+                field='startDate' 
+                headerText='Start Date' 
+                textAlign='Right' 
+                format='yMd' 
+                width=200
+                editType="datepickeredit"
+            ></e-column>
+            <e-column 
+                field='endDate' 
+                headerText='End Date' 
+                textAlign='Right' 
+                format='yMd' 
+                width=200
+                editType="datepickeredit"
+            ></e-column>
+            <e-column 
+                field='duration' 
+                headerText='Duration' 
+                textAlign='Right' 
+                width=200
+                editType="numericedit"
+                [edit]="numericParams"
+            ></e-column>
+            <e-column 
+                field='progress' 
+                headerText='Progress' 
+                textAlign='Right' 
+                width=100
+                editType="numericedit"
+                [edit]="numericParams"
+            ></e-column>
+            <e-column 
+                field='priority' 
+                headerText='Priority' 
+                textAlign='Right' 
+                width=200
+            ></e-column>
+            <e-column
+                field="approved"
+                headerText="Approved"
+                type="boolean"
+                [displayAsCheckBox]="true"
+                width=120
+                textAlign="Right"
+                editType="booleanedit"
+                freeze='Right'
+            ></e-column>
+        </e-columns>
+</ejs-treegrid>
